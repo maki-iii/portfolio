@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#e5e5e5"/>
+  <rect x="55" y="55" width="1090" height="690" rx="16" fill="#f8f8f8" stroke="#d5d5d5"/>
+  <path d="M55 106H1145" stroke="#e5e5e5"/>
+  <g fill="#b5b5b5"><circle cx="82" cy="82" r="5"/><circle cx="100" cy="82" r="5"/><circle cx="118" cy="82" r="5"/></g>
+  <rect x="418" y="69" width="364" height="24" rx="6" fill="#e5e5e5"/>
+  <g font-family="Arial, sans-serif">
+    <text x="105" y="159" font-size="20" font-weight="700" fill="#0b0b0b">Your website.</text>
+    <text x="870" y="159" font-size="13" fill="#6b6b6b">Work</text><text x="945" y="159" font-size="13" fill="#6b6b6b">About</text><text x="1020" y="159" font-size="13" fill="#6b6b6b">Contact</text>
+    <path d="M105 189H1095" stroke="#e5e5e5"/>
+    <text x="105" y="277" font-size="12" letter-spacing="3" fill="#6b6b6b">YOUR PROJECT PREVIEW</text>
+    <text x="105" y="345" font-size="51" font-weight="700" fill="#0b0b0b">A space for</text>
+    <text x="105" y="405" font-size="51" font-weight="700" fill="#6b6b6b">your next idea.</text>
+    <rect x="105" y="437" width="345" height="8" rx="4" fill="#e5e5e5"/><rect x="105" y="457" width="270" height="8" rx="4" fill="#e5e5e5"/>
+    <rect x="105" y="499" width="149" height="43" rx="5" fill="#0b0b0b"/><text x="129" y="526" font-size="12" fill="#fff">Explore project ↗</text>
+    <rect x="687" y="249" width="360" height="300" rx="10" fill="#fff" stroke="#e5e5e5"/>
+    <rect x="799" y="328" width="136" height="94" rx="8" fill="#f8f8f8" stroke="#e5e5e5"/>
+    <path d="M813 406 845 371 870 393 896 366 923 406Z" fill="#e5e5e5"/><circle cx="827" cy="350" r="9" fill="#e5e5e5"/>
+    <text x="867" y="466" text-anchor="middle" font-size="14" fill="#6b6b6b">Your screenshot here</text>
+    <path d="M105 606H1095" stroke="#e5e5e5"/>
+    <text x="600" y="680" text-anchor="middle" font-size="12" letter-spacing="2" fill="#6b6b6b">PLACEHOLDER · REPLACE WITH YOUR WEBSITE SCREENSHOT</text>
+  </g>
+</svg>
