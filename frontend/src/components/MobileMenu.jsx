@@ -40,7 +40,7 @@ export default function MobileMenu({ activeSection }) {
           <nav className="radial-links" aria-label="Mobile navigation">
             {items.map(({ id, label, Icon }, index) => {
               const angle = (index + 1) * Math.PI / 10;
-              return <a key={id} className="radial-item" style={{ '--x': `${44 + Math.cos(angle) * 220}px`, '--y': `${44 + Math.sin(angle) * 220}px`, '--order': index + 1 }} href={`#${id}`} aria-label={label} aria-current={activeSection === id ? 'location' : undefined} onClick={close}><Icon size={21} aria-hidden="true" /><span>{label}</span></a>;
+              return <a key={id} className="radial-item" style={{ '--x': `${264 - Math.cos(angle) * 220}px`, '--y': `${44 + Math.sin(angle) * 220}px`, '--order': index + 1 }} href={`#${id}`} aria-label={label} aria-current={activeSection === id ? 'location' : undefined} onClick={close}><Icon size={21} aria-hidden="true" /><span>{label}</span></a>;
             })}
           </nav>
           <div className="radial-theme"><ThemeToggle /></div>
@@ -50,3 +50,4 @@ export default function MobileMenu({ activeSection }) {
     </div>
   );
 }
+

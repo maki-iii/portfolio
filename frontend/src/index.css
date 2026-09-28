@@ -340,3 +340,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 @keyframes radial-enter { from { opacity: 0; transform: translate(-50%, -50%) scale(.65); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
 @media (prefers-reduced-motion: reduce) { .radial-dialog[open] .radial-item { animation: none; } }
 
+
+/* Left-facing menu with a transparent surface and blurred page backdrop. */
+.radial-dialog { background: transparent; border: 0; box-shadow: none; }
+.radial-dialog::backdrop { background: rgb(248 248 248 / 18%); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+:root[data-theme='dark'] .radial-dialog::backdrop { background: rgb(11 11 11 / 25%); }
+.radial-close { left: auto; right: 12px; }
+.radial-theme { left: 16px; }
+.radial-caption { left: auto; right: 28px; text-align: right; }
