@@ -308,3 +308,13 @@ h1 span { transition: color 350ms ease; }
 @media (prefers-reduced-motion: reduce) { .reveal-content { opacity: 1; filter: none; transform: none; transition: none; } }
 @media print { .reveal-content { opacity: 1; filter: none; transform: none; } }
 
+
+
+.skill-list .tag { display: inline-flex; align-items: center; gap: 8px; }
+.skill-icon { width: 15px; height: 15px; flex-shrink: 0; color: var(--color-muted); }
+.skill-icon-pair { display: inline-flex; gap: 3px; width: auto; }
+.skill-icon-pair svg { width: 13px; height: 15px; }
+
+/* Hide the document scrollbar without disabling scrolling. */
+html, body { scrollbar-width: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
