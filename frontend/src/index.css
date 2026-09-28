@@ -318,3 +318,25 @@ h1 span { transition: color 350ms ease; }
 /* Hide the document scrollbar without disabling scrolling. */
 html, body { scrollbar-width: none; }
 html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* Compact circular mobile navigation. */
+.radial-trigger { border-radius: 50%; border: 1px solid var(--color-light); background: var(--color-surface); }
+.radial-dialog { position: fixed; inset: 12px 12px auto auto; margin: 0; padding: 0; width: 308px; max-width: calc(100vw - 16px); max-height: calc(100dvh - 24px); border: 1px solid var(--color-light); border-radius: 28px; background: var(--color-background); color: var(--color-primary); overflow: auto; box-shadow: 0 18px 70px #0003; }
+.radial-dialog::backdrop { background: #0006; backdrop-filter: blur(4px); }
+.radial-panel { position: relative; height: 370px; width: 100%; }
+.radial-close { position: absolute; top: 12px; left: 12px; width: 64px; height: 64px; border: 1px solid var(--color-light); border-radius: 50%; display: grid; place-items: center; background: var(--color-surface); color: var(--color-primary); cursor: pointer; }
+.radial-caption { position: absolute; top: 112px; left: 28px; font-size: 20px; letter-spacing: -.5px; }
+.radial-caption span { display: block; margin-top: 7px; font-size: 10px; letter-spacing: 0; color: var(--color-gray); }
+.site-header .radial-links { position: static; margin: 0; padding: 0; width: auto; }
+.site-header .radial-links .radial-item { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); width: 56px; height: 56px; border: 1px solid var(--color-light); border-radius: 50%; background: var(--color-surface); color: var(--color-muted); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px; text-decoration: none; box-shadow: 0 3px 10px #00000008; }
+.radial-item span { font-size: 8px; line-height: 1.2; }
+.site-header .radial-links .radial-item[aria-current='location'] { background: var(--color-primary); color: var(--color-surface); border-color: var(--color-primary); }
+.site-header .radial-links .radial-item:hover { border-color: var(--color-gray); }
+.radial-theme { position: absolute; left: 236px; top: 16px; }
+.radial-theme .theme-toggle { width: 56px; height: 56px; }
+.radial-download { position: absolute; top: 316px; left: 28px; right: 28px; display: flex; justify-content: center; }
+.radial-close:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.radial-dialog[open] .radial-item { animation: radial-enter 350ms both; animation-delay: calc(var(--order) * 35ms); }
+@keyframes radial-enter { from { opacity: 0; transform: translate(-50%, -50%) scale(.65); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .radial-dialog[open] .radial-item { animation: none; } }
+
