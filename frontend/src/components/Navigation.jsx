@@ -76,12 +76,13 @@ export default function Navigation() {
         <ThemeToggle />
         <ActiveNavIndicator activeSection={activeSection} />
       </nav>
-      <MobileMenu activeSection={activeSection} />
+      <div className="mobile-header-actions"><DownloadCV /><MobileMenu activeSection={activeSection} /></div>
     </header>
     <SectionRail activeSection={activeSection} />
     </>
   );
 }
+
 
 
 

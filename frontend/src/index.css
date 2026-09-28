@@ -348,3 +348,26 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 .radial-close { left: auto; right: 12px; }
 .radial-theme { left: 16px; }
 .radial-caption { left: auto; right: 28px; text-align: right; }
+
+.mobile-header-actions { display: none; }
+@media (max-width: 700px) {
+  .mobile-header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .mobile-header-actions .download-cv { padding: 9px 10px; font-size: 11px; }
+  .radial-panel { height: 308px; }
+  .site-header.page-width { width: calc(100% - 32px); }
+  .site-header .wordmark { min-width: 0; overflow-wrap: anywhere; }
+}
+
+/* Bring the circular controls closer to the close button. */
+.radial-dialog { width: 260px; }
+.radial-panel { height: 260px; }
+.radial-close { width: 52px; height: 52px; top: 12px; right: 12px; }
+.site-header .radial-links .radial-item { width: 48px; height: 48px; }
+.radial-theme { left: 14px; top: 14px; }
+.radial-theme .theme-toggle { width: 48px; height: 48px; }
+
+/* Wrap controls closely around the close button, rather than a large empty quarter circle. */
+.radial-dialog { width: 184px; }
+.radial-panel { height: 256px; }
+.radial-close { top: 102px; right: 10px; width: 52px; height: 52px; }
+.radial-theme { left: 124px; top: 8px; }
