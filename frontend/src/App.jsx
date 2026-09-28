@@ -9,7 +9,7 @@ import ContactPage from './pages/ContactPage';
 export default function App() {
   return (
     <Layout>
-      <section id="home" aria-label="Home"><HomePage /></section>
+      <RevealSection id="home" label="Home"><HomePage /></RevealSection>
       <RevealSection id="about" label="About"><AboutPage /></RevealSection>
       <RevealSection id="projects" label="Projects"><ProjectsPage /></RevealSection>
       <RevealSection id="skills" label="Skills"><SkillsPage /></RevealSection>
@@ -17,4 +17,5 @@ export default function App() {
     </Layout>
   );
 }
+
 

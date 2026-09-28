@@ -300,9 +300,11 @@ h1 span { transition: color 350ms ease; }
 .page-heading { text-align: center; }
 .page-heading .hero-intro { margin-inline: auto; }
 
-/* Reveal once as a section enters the viewport, keeping anchor positions stable. */
-.reveal-content { opacity: 0; filter: blur(8px); transform: translateY(24px); transition: opacity 700ms ease, filter 700ms ease, transform 700ms cubic-bezier(.22,.68,0,1); }
-.reveal-section[data-revealed='true'] > .reveal-content,
+/* Keep inactive sections softly blurred, synchronized with the navigation. */
+.reveal-content { opacity: .5; filter: blur(5px); transition: opacity 500ms ease, filter 500ms ease; }
+.reveal-section[data-active='true'] > .reveal-content,
+#home:not([data-active]) > .reveal-content,
 .reveal-section:focus-within > .reveal-content { opacity: 1; filter: none; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal-content { opacity: 1; filter: none; transform: none; transition: none; } }
 @media print { .reveal-content { opacity: 1; filter: none; transform: none; } }
+

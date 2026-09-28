@@ -29,7 +29,13 @@ export default function Navigation() {
       if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
         active = targets.at(-1)?.id;
       }
-      if (active) setActiveSection(active);
+      if (active) {
+        setActiveSection(active);
+        targets.forEach(target => {
+          const value = String(target.id === active);
+          if (target.dataset.active !== value) target.dataset.active = value;
+        });
+      }
     }
 
     function scheduleUpdate() {
@@ -76,6 +82,7 @@ export default function Navigation() {
     </>
   );
 }
+
 
 
 
