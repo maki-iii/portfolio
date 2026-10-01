@@ -1,5 +1,6 @@
 import PageHeading from '../components/PageHeading';
 import ProjectSlider from '../components/ProjectSlider';
+import GitHubActivity from '../components/GitHubActivity';
 import { projects } from '../data/projects';
 
 export default function ProjectsPage() {
@@ -10,7 +11,9 @@ export default function ProjectsPage() {
         <div className="section-heading"><p className="eyebrow">01 / Projects</p></div>
         <ProjectSlider projects={projects} />
       </section>
+      <GitHubActivity />
     </>
   );
 }
+
 

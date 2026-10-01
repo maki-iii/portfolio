@@ -371,3 +371,66 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 .radial-panel { height: 256px; }
 .radial-close { top: 102px; right: 10px; width: 52px; height: 52px; }
 .radial-theme { left: 124px; top: 8px; }
+
+.github-activity { border-top: 1px solid var(--color-light); padding-block: 54px 64px; }
+.github-activity-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+.github-activity-heading .eyebrow { margin-bottom: 12px; }
+.github-profile-link { display: inline-flex; align-items: center; gap: 9px; font-size: 12px; }
+.github-profile-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.github-chart-card { border: 1px solid var(--color-light); border-radius: 6px; padding: 26px; background: var(--color-surface); min-width: 0; transition: background-color 350ms ease, border-color 350ms ease; }
+.github-chart-scroll { max-width: 100%; overflow-x: auto; padding-block: 8px; scrollbar-width: thin; }
+.github-chart-scroll:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
+.github-chart { display: block; width: 100%; min-width: 660px; min-height: 110px; }
+:root[data-theme='dark'] .github-chart { filter: invert(1) hue-rotate(180deg); }
+.github-chart-note, .github-chart-message { font-size: 11px; color: var(--color-gray); line-height: 1.7; margin: 16px 0 0; }
+.github-chart-note a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) { .github-activity-heading { align-items: flex-start; flex-direction: column; gap: 16px; } .github-chart-card { padding: 18px; } }
+@media (prefers-reduced-motion: reduce) { .github-chart-card { transition: none; } }
+
+
+/* A restrained, compact contribution graph. */
+.github-activity { width: 100%; padding-block: 54px 64px; }
+.github-activity-heading { gap: 24px; margin-bottom: 26px; }
+
+.github-activity-heading .eyebrow { margin-bottom: 12px; }
+.github-chart-card { max-width: 760px; margin-inline: auto; padding: 16px; }
+.github-chart-scroll { padding-block: 4px; }
+.github-chart { min-width: 540px; min-height: 0; height: auto; }
+.github-chart-note { font-size: 10px; margin-top: 10px; }
+@media (max-width: 600px) {
+  .github-activity-heading { gap: 12px; }
+  .github-chart-card { padding: 12px; }
+}
+
+
+/* A gentle green glow, confined to the compact contribution graph. */
+.github-chart { filter: drop-shadow(0 0 2px rgb(45 164 78 / 28%)); }
+.github-chart-card { border-color: rgb(45 164 78 / 24%); box-shadow: 0 0 18px rgb(45 164 78 / 8%); }
+:root[data-theme='dark'] .github-chart { filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 3px rgb(63 185 80 / 45%)); }
+:root[data-theme='dark'] .github-chart-card { box-shadow: 0 0 22px rgb(63 185 80 / 12%); }
+
+/* Reference-inspired charcoal calendar with rounded green activity cells. */
+.github-chart-card, :root[data-theme='dark'] .github-chart-card { background: #22292f; border-color: #394148; box-shadow: none; color: #adbac7; border-radius: 8px; padding: 16px; }
+.heatmap-topline, .heatmap-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 11px; }
+.heatmap-topline { margin-bottom: 18px; }
+.heatmap-topline > span:first-child { font-size: 13px; font-weight: 600; }
+.heatmap-scroll { overflow-x: auto; max-width: 100%; scrollbar-width: thin; scrollbar-color: #46525c #22292f; padding-bottom: 12px; }
+.heatmap-scroll:focus-visible { outline: 2px solid #4ac879; outline-offset: 3px; }
+.heatmap-calendar { display: flex; gap: 20px; width: max-content; }
+.heatmap-weekdays { display: grid; grid-template-rows: repeat(7, 14px); gap: 4px; padding-top: 24px; font-size: 10px; position: sticky; left: 0; z-index: 1; background: #22292f; padding-right: 8px; }
+.heatmap-month-label { display: block; height: 24px; font-size: 10px; }
+.heatmap-month-label > span { opacity: .55; }
+.heatmap-days { display: grid; grid-template-rows: repeat(7, 14px); grid-auto-columns: 14px; gap: 4px; }
+.heatmap-cell { display: block; width: 14px; height: 14px; border-radius: 4px; background: #2d353d; border: 1px solid #ffffff05; }
+.heatmap-cell[data-level='1'] { background: #2e5043; }
+.heatmap-cell[data-level='2'] { background: #367653; }
+.heatmap-cell[data-level='3'] { background: #419f65; }
+.heatmap-cell[data-level='4'] { background: #4ac879; }
+.heatmap-days .heatmap-cell:hover { outline: 1px solid #adbac7; outline-offset: 1px; }
+.heatmap-footer { margin-top: 10px; flex-wrap: wrap; font-size: 10px; }
+.heatmap-legend { display: inline-flex; align-items: center; gap: 5px; }
+.heatmap-legend .heatmap-cell { width: 12px; height: 12px; }
+.github-chart-card .github-chart-note { color: #8a99a6; font-size: 9px; margin-top: 14px; }
+.heatmap-status { font-size: 12px; color: #adbac7; padding-block: 32px; margin: 0; }
+
+.heatmap-cell[data-pending='true'] { opacity: .45; background: #2d353d; border-color: #adbac718; }

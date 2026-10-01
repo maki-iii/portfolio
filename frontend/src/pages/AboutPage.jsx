@@ -1,6 +1,7 @@
 
 import PageHeading from '../components/PageHeading';
 
+
 import Arrow from '../components/Arrow';
 import { profile } from '../data/profile';
 
@@ -28,6 +29,9 @@ export default function AboutPage() {
           and reliable applications.</p><a className="button" href="#projects">Explore my work <Arrow /></a></div>
       </section>
 
+
     </>
   );
 }
+
+
