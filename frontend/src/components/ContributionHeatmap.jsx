@@ -5,20 +5,51 @@ const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 export default function ContributionHeatmap({ username }) {
   const [result, setResult] = useState(null);
   useEffect(() => {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
     let disposed = false;
-    fetch(`https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(username)}?y=last`, { signal: controller.signal })
-      .then(response => { if (!response.ok) throw new Error('Unavailable'); return response.json(); })
-      .then(data => {
+    let controller;
+    let inFlight = false;
+    let lastAttempt = 0;
+    const refreshInterval = 5 * 60 * 1000;
+
+    async function refresh() {
+      if (disposed || inFlight || document.hidden) return;
+      inFlight = true;
+      lastAttempt = Date.now();
+      controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(username)}?y=last`, {
+          signal: controller.signal,
+          headers: { 'Cache-Control': 'no-cache' },
+        });
+        if (!response.ok) throw new Error('Unavailable');
+        const data = await response.json();
         if (!Array.isArray(data.contributions)) throw new Error('Invalid data');
         const days = data.contributions.filter(day => /^\d{4}-\d{2}-\d{2}$/.test(day.date) && Number.isFinite(day.count) && [0, 1, 2, 3, 4].includes(day.level)).sort((a, b) => a.date.localeCompare(b.date));
         if (!days.length) throw new Error('No data');
-        if (!disposed) setResult({ username, days });
-      })
-      .catch(() => { if (!disposed) setResult({ username, error: true }); })
-      .finally(() => clearTimeout(timeout));
-    return () => { disposed = true; clearTimeout(timeout); controller.abort(); };
+        if (!disposed) setResult({ username, days, updatedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+      } catch {
+        if (!disposed) setResult(previous => previous?.username === username && previous.days ? { ...previous, stale: true } : { username, error: true });
+      } finally {
+        clearTimeout(timeout);
+        inFlight = false;
+      }
+    }
+
+    function resume() {
+      if (!document.hidden && Date.now() - lastAttempt >= refreshInterval) refresh();
+    }
+    refresh();
+    const interval = setInterval(refresh, refreshInterval);
+    document.addEventListener('visibilitychange', resume);
+    window.addEventListener('online', resume);
+    return () => {
+      disposed = true;
+      controller?.abort();
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', resume);
+      window.removeEventListener('online', resume);
+    };
   }, [username]);
 
   if (!result || result.username !== username) return <p className="heatmap-status" role="status">Loading contributions…</p>;
@@ -70,8 +101,10 @@ export default function ContributionHeatmap({ username }) {
         </div>
       </div>
       <div className="heatmap-footer"><span>{total.toLocaleString()} contributions · through {lastRecordedDate}</span><span className="heatmap-legend" aria-label="Green intensity from fewer to more contributions">Less {[0, 1, 2, 3, 4].map(level => <i className="heatmap-cell" data-level={level} key={level} />)} More</span></div>
+      <p className="heatmap-refresh-status">{result.stale ? 'Refresh unavailable · showing the last loaded data' : `Updated ${result.updatedAt}`} · Refreshes every 5 minutes</p>
     </>
   );
 }
+
 
 
