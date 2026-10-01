@@ -5,7 +5,7 @@ import { profile } from '../data/profile';
 
 export default function Layout({ children }) {
   useEffect(() => {
-    document.title = profile.name + ' — Portfolio';
+    document.title = profile.name + ' | Full-Stack Developer';
     // Restore bookmarked sections once React has rendered their targets.
     const target = document.getElementById(window.location.hash.slice(1));
     target?.scrollIntoView({ behavior: 'instant' });

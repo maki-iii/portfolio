@@ -78,11 +78,13 @@ export default function ContributionHeatmap({ username }) {
     });
     cursor.setUTCDate(cursor.getUTCDate() + 1);
   }
+  const formatDate = value => new Date(value + 'T00:00:00Z').toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  const periodLabel = formatDate(recentDays[0].date) + ' – ' + formatDate(lastRecordedDate);
   const total = recentDays.reduce((sum, day) => sum + day.count, 0);
   return (
     <>
       <div className="heatmap-topline"><span>Contribution activity</span><span>Through December {latestDate.getUTCFullYear()}</span></div>
-      <div className="heatmap-scroll" role="region" tabIndex={0} aria-label={`${total} recorded contributions. Calendar through December; future dates are empty. Scroll to view all months.`}>
+      <div className="heatmap-scroll" role="region" tabIndex={0} aria-label={`${total} contributions from ${periodLabel}. Calendar through December; future dates are empty. Scroll to view all months.`}>
         <div className="heatmap-calendar">
           <div className="heatmap-weekdays" aria-hidden="true">{weekdays.map(day => <span key={day}>{day}</span>)}</div>
           {Array.from(months, ([month, days]) => {
@@ -100,7 +102,7 @@ export default function ContributionHeatmap({ username }) {
           })}
         </div>
       </div>
-      <div className="heatmap-footer"><span>{total.toLocaleString()} contributions · through {lastRecordedDate}</span><span className="heatmap-legend" aria-label="Green intensity from fewer to more contributions">Less {[0, 1, 2, 3, 4].map(level => <i className="heatmap-cell" data-level={level} key={level} />)} More</span></div>
+      <div className="heatmap-footer"><span>{total.toLocaleString()} contributions · {periodLabel}</span><span className="heatmap-legend" aria-label="Green intensity from fewer to more contributions">Less {[0, 1, 2, 3, 4].map(level => <i className="heatmap-cell" data-level={level} key={level} />)} More</span></div>
       <p className="heatmap-refresh-status">{result.stale ? 'Refresh unavailable · showing the last loaded data' : `Updated ${result.updatedAt}`} · Refreshes every 5 minutes</p>
     </>
   );
