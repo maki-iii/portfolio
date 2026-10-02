@@ -1,8 +1,10 @@
-import { SiHtml5, SiCss, SiJavascript, SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiGit, SiGithub, SiVite, SiFigma, SiXampp } from 'react-icons/si';
+import { SiHtml5, SiCss, SiJavascript, SiTypescript, SiNextdotjs, SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiGit, SiGithub, SiVite, SiFigma, SiXampp } from 'react-icons/si';
 import { LuDatabase, LuWaypoints, LuMonitorSmartphone, LuAccessibility, LuLightbulb, LuFlaskConical, LuCode } from 'react-icons/lu';
 
 const icons = {
   JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  'Next.js': SiNextdotjs,
   React: SiReact,
   'Tailwind CSS': SiTailwindcss,
   'Node.js': SiNodedotjs,
